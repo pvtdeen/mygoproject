@@ -1,0 +1,26 @@
+//to generate the code run the following command 
+// protoc --go_out=. --go-grpc_out=. user.proto
+
+
+syntax = "proto3";
+
+package users;
+
+option go_package = "./users";
+service GetUsersService {
+    rpc GetUsers (GetUsersRequest) returns (GetUsersResponse);
+}
+
+message GetUsersRequest {
+    repeated string ids = 1;
+}
+
+message GetUsersResponse {
+    repeated GetUsersDto users = 1;
+}
+
+message GetUsersDto {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+}
